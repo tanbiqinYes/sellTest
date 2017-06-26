@@ -23,6 +23,34 @@ var proxyTable = config.dev.proxyTable
 var app = express()
 var compiler = webpack(webpackConfig)
 
+var appData = require('../data.json');
+var seller = appData.seller;
+var goods = appData.goods;
+var ratings = appData.ratings;
+
+var apiRoutes = express.Router();
+
+apiRoutes.get('/seller', function(req, res){
+  res.json({
+    errno:0,
+    data:seller
+  });
+});
+apiRoutes.get('/goods', function(req, res){
+  res.json({
+    errno:0,
+    data:goods
+  });
+});
+apiRoutes.get('/ratings', function(req, res){
+  res.json({
+    errno:0,
+    data:ratings
+  });
+});
+
+app.use('/api', apiRoutes);
+
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
   publicPath: webpackConfig.output.publicPath,
   quiet: true
@@ -55,7 +83,7 @@ app.use(require('connect-history-api-fallback')())
 app.use(devMiddleware)
 
 // enable hot-reload and state-preserving
-// compilation error display
+// compilation errno display
 app.use(hotMiddleware)
 
 // serve pure static assets
