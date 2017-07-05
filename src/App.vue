@@ -13,13 +13,13 @@
       </div>
     </div>
     <router-view></router-view> 
-    <v-content></v-content>
+    <v-goods></v-goods>
   </div>
 </template>
 
 <script>
 import header from './components/header/header.vue';
-import content from './components/content/content.vue';
+import goods from './components/goods/goods.vue';
 
 const ERR_OK = 0;
 
@@ -41,7 +41,7 @@ export default {
   },
   components: {
     'v-header': header,
-    'v-content': content
+    'v-goods': goods
   }
 };
 </script>
