@@ -5,8 +5,28 @@
 	</div>
 </template>
 
-<script type="text/ecmascript-6">
-	export default {};
+<script >
+	
+	export default {
+		props: {
+			seller: {
+				type: Object
+			}
+		},
+		data() {
+			return {
+				goods: []
+			};
+		},
+		created: {
+			this.$http.get('/api/goods').then((response) => {
+
+			});
+		},
+		methods: {
+
+		}
+	};
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
