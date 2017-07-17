@@ -19,12 +19,8 @@
 			};
 		},
 		created: {
-			this.$http.get('/api/goods').then((response) => {
-
-			});
 		},
 		methods: {
-
 		}
 	};
 </script>
