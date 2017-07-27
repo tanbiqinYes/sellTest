@@ -62,7 +62,25 @@
 		},
 		methods: {
 		}
-	};
+	},
+	data() {
+		return {
+			goods: []
+		};
+	},
+	created() {
+		this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
+
+		this.$http.get('/api/goods').then((response) => {
+			response = response.body;
+			if (response.errno === ERR_OK) {
+				this.goods = response.data;
+			}
+		});
+	},
+	methods: {
+	}
+};
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" >
